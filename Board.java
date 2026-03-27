@@ -42,7 +42,6 @@ public class Board {
         JPanel gridPanel = new JPanel(new GridLayout(ROWS, COLS, 3, 3));
         gridPanel.setBackground(BOARD_COLOR);
         gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        gridPanel.setPreferredSize(new Dimension(580, 520));
 
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {

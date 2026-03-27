@@ -22,11 +22,11 @@ public class Connect4Game {
 
     private void initializeGame() {
         frame = new JFrame("Connect 4 Game");
-        frame.setSize(700, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setBackground(BACKGROUND_COLOR);
+        frame.setMinimumSize(new Dimension(600, 700));
         showStartScreen();
     }
 
@@ -51,7 +51,7 @@ public class Connect4Game {
         mainPanel.add(Box.createVerticalStrut(5));
         mainPanel.add(subtitle);
 
-        mainPanel.add(Box.createVerticalStrut(50));
+        mainPanel.add(Box.createVerticalGlue());
 
         // Description
         JLabel description = new JLabel("Choose Your Game Mode:");
@@ -80,16 +80,16 @@ public class Connect4Game {
         });
         mainPanel.add(pvcBtn);
 
-        mainPanel.add(Box.createVerticalStrut(30));
+        mainPanel.add(Box.createVerticalGlue());
 
         frame.add(mainPanel);
+        frame.pack();
         frame.setVisible(true);
     }
 
     private JButton createStyledButton(String text, Color bgColor) {
         JButton btn = new JButton(text);
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btn.setMaximumSize(new Dimension(300, 60));
         btn.setPreferredSize(new Dimension(300, 60));
         btn.setFont(new Font("Arial", Font.BOLD, 16));
         btn.setBackground(bgColor);
@@ -123,7 +123,7 @@ public class Connect4Game {
         board = new Board(this, player1, player2, isPvP);
         frame.getContentPane().removeAll();
         frame.add(board.getBoardPanel());
-        frame.revalidate();
+        frame.validate();
         frame.repaint();
         board.updateStatus();
     }
